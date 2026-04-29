@@ -111,4 +111,4 @@ extension after a policy update constitutes acceptance.
 ## Contact
 
 For privacy questions, data deletion requests, or to report a concern,
-email **privacy@peerstarllc.com**.
+email **info@peerstarllc.com**.
