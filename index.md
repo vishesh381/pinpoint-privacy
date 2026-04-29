@@ -2,7 +2,7 @@
 
 **Last updated:** April 29, 2026
 **Publisher:** Peerstar LLC
-**Contact:** privacy@peerstarllc.com
+**Contact:** info@peerstarllc.com
 
 PinPoint is a private feedback-pin Chrome extension built exclusively for
 Peerstar LLC staff. This policy describes what data the extension handles,
@@ -85,7 +85,7 @@ We do not sell, rent, share, or transfer collected data to any third party.
 - **In Salesforce**: data is retained according to Peerstar's standard
   retention policies for Opportunity-linked records.
 - **To request deletion**: contact your Peerstar Salesforce administrator
-  directly, or email privacy@peerstarllc.com.
+  directly, or email info@peerstarllc.com.
 - **Removing the extension** stops further collection but does not delete
   existing Salesforce records.
 
