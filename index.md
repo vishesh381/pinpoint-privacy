@@ -1,114 +1,35 @@
 # PinPoint Privacy Policy
 
-**Last updated:** April 29, 2026
-**Publisher:** Peerstar LLC
-**Contact:** info@peerstarllc.com
+Last updated: October 15, 2026. Publisher: Peerstar LLC. Contact: info@peerstarllc.com.
 
-PinPoint is a private feedback-pin Chrome extension built exclusively for
-Peerstar LLC staff. This policy describes what data the extension handles,
-where it goes, and who can see it.
+This policy describes the information handled by PinPoint, where it goes and who can access it. PinPoint is an internal operational feedback and ticketing tool for approved Peerstar staff.
 
-## Scope
+## Information handled
 
-PinPoint runs only when a Peerstar staff member signs in with their existing
-Salesforce credentials. Without an authenticated session against Peerstar's
-Salesforce organization (Org ID `00Dal00001ODMcHEAX`), the extension performs
-no data collection.
+PinPoint lets approved staff report a request on a selected webpage. It handles the signed-in Salesforce identity; page URL/title; comment and reply text; priority, category, assignment and mentions; optional record references and needed-by date; conditional bug/feature details; and location/browser metadata needed to place a pin. Anchor metadata can include a short text preview and fingerprint of the selected element.
 
-## What we collect
+Screenshots are optional and captured only when the user selects the capture option. The updated intake also supports optional user-selected image, PDF, Office, OpenDocument and text files. Users should review selected pages/files and avoid sending participant names, dates of birth or clinical details through support text, screenshots or files. Link the authorized Salesforce record instead when appropriate.
 
-When an authenticated user drops a pin or leaves a comment, PinPoint captures:
+PinPoint's purpose is operational feedback and ticketing. It does not use the collected information for advertising or sell it to data brokers.
 
-- The URL and title of the page where the pin was dropped
-- The text of comments and replies
-- Optional screenshots of the user's active tab — captured **only** when the
-  user explicitly clicks the "capture screenshot" button while composing a
-  comment
-- The signed-in user's Salesforce identity (user ID, name, email)
-- Pin location coordinates (CSS selector and viewport position)
-- Browser user-agent string and viewport dimensions
+## Salesforce and Monday data flow
 
-The extension does not collect: keystrokes outside the comment composer, page
-content beyond the user-clicked location, browsing history, form data, or
-data from any tab the user has not explicitly interacted with using PinPoint.
+PinPoint records, support tickets and uploaded files are stored in Peerstar Salesforce. The Salesforce integration sends the resulting ticket's operational description, request fields, requester/assignment details, status and authenticated Salesforce links to Peerstar's Monday Tickets board for triage and development.
 
-## Where data is stored
+For the confirmed intake release, attachment content remains in Salesforce; Monday receives authenticated links rather than file bytes. A link requires Salesforce sign-in and the appropriate file/record access. PinPoint does not create public file distribution links for this flow. Existing board membership controls access to ticket information held in Monday; a filtered queue view is not an access restriction.
 
-All collected data is stored exclusively in **Peerstar LLC's Salesforce
-organization** as native `Page_Comment__c` records and ContentVersion files.
-No data is sent to third-party servers, analytics tools, advertising networks,
-or external APIs at any time.
+The extension authenticates with Salesforce over HTTPS. Its service worker holds OAuth credentials and sends authenticated requests only to validated Salesforce endpoints. The Monday credential stays in the Salesforce integration, not in content scripts or the extension's requester form.
 
-The extension makes outbound network requests **only** to:
+## Local extension storage and access
 
-1. `login.salesforce.com` (OAuth authentication)
-2. `*.my.salesforce.com` and `*.lightning.force.com` (Peerstar's Salesforce
-   instance for API calls)
+OAuth tokens and extension preferences use Chrome extension storage. Local browser storage is not described here as a separate encrypted vault, and no unverified draft-retention period is promised. The selected files and screenshot data are processed temporarily during submission. Signing out removes stored Salesforce authentication through the extension's sign-out flow; removing the extension stops its collection but does not delete server records.
 
-## Local storage
+Salesforce sharing and field/object permissions govern record and file access. PinPoint users require the relevant permission set and approved application access. Administrators may access records according to their Salesforce privileges. Monday access is governed independently by Peerstar's workspace and board settings. No blanket promise that every staff member sees only their assigned records is made.
 
-PinPoint uses Chrome's `chrome.storage.local` API to cache:
+## Retention and requests
 
-- OAuth access and refresh tokens (encrypted by Chrome at rest)
-- Offline draft comments (so users don't lose work during connectivity loss)
-- User preferences (sidebar open/closed state, keyboard-shortcut overrides)
+Salesforce and Monday data follow Peerstar's applicable retention and administrative policies. Ask the Peerstar administrator or info@peerstarllc.com for access, correction or deletion requests. A successful request may require changes in both systems; uninstalling the extension alone does not remove submitted tickets or files.
 
-No protected health information (PHI), patient data, or comment content is
-stored locally beyond temporary drafts. Drafts are cleared when sent or after
-30 days, whichever is sooner.
+## Policy updates
 
-## Who can access data
-
-- **In Salesforce**: only Peerstar staff with the `Pin_Tool_User` permission
-  set assigned. Salesforce field-level security and record-level sharing rules
-  govern all access. Standard Salesforce audit logs apply.
-- **In the extension**: only the signed-in user can see their tokens and
-  drafts on their own device.
-- **Peerstar admins** can access any comment via Salesforce reports, list
-  views, or the standard Salesforce data model — same as any other Salesforce
-  data.
-
-## Authentication
-
-Sign-in uses **Salesforce OAuth 2.0 with PKCE** (Proof Key for Code Exchange).
-The extension never sees, stores, or transmits Salesforce passwords. The
-extension's hard-coded organization allowlist (`VITE_SF_ALLOWED_ORG_IDS`)
-restricts authentication to Peerstar's Salesforce organization — sign-in
-attempts from any other organization are rejected client-side.
-
-## Sharing with third parties
-
-We do not sell, rent, share, or transfer collected data to any third party.
-
-## Data retention and deletion
-
-- **In Salesforce**: data is retained according to Peerstar's standard
-  retention policies for Opportunity-linked records.
-- **To request deletion**: contact your Peerstar Salesforce administrator
-  directly, or email info@peerstarllc.com.
-- **Removing the extension** stops further collection but does not delete
-  existing Salesforce records.
-
-## Compliance
-
-PinPoint is designed for use within a HIPAA-aware Salesforce environment.
-Comments may be tied to PHI-related records (e.g., referrals containing
-patient identifiers) — but the extension itself is treated as a thin client.
-All HIPAA controls are enforced server-side by Peerstar's Salesforce
-configuration (encryption at rest, audit log, BAA with Salesforce).
-
-## Children
-
-PinPoint is an internal staff tool. It is not directed at and does not
-knowingly collect data from children under 13.
-
-## Changes to this policy
-
-Material changes will be announced via Peerstar internal communication and
-the "Last updated" date above will reflect the change. Continued use of the
-extension after a policy update constitutes acceptance.
-
-## Contact
-
-For privacy questions, data deletion requests, or to report a concern,
-email **info@peerstarllc.com**.
+Peerstar will update this policy when the workflow changes. PinPoint is an internal staff tool and is not directed at children.
